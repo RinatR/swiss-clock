@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body {
+			background-color: grey;
+		}
+
+		.clock {
+			position: relative;
+			width: 400px;
+			height: 400px;
+			margin: 0 auto;
+			border-radius: 50%;
+			background-color: #ffffff;			
+		}
+
+
+		.clock__arrow {
+			position: absolute;
+			top: 40px;			
+			transform: translateX(-50%);
+			transform-origin: bottom;									
+		}
+
+		.clock__arrow--second {				
+			top: 80px;		
+			left: 50%;
+			width: 6px;	
+			height: 120px;
+			animation: rotate_arrow 60s steps(60, end) infinite;
+			background-color: red;	
+			z-index: 3;	
+			margin-left: -3px;	
+		}
+
+		.clock__arrow--second:after {
+			position: absolute;
+			left: 50%;
+			top: 0;
+			transform: translateX(-50%);
+			content: "";
+			width: 20px;
+			height: 20px;
+			background-color: red;
+			border-radius: 50%;
+		}
+
+		.clock__arrow--second:before {
+			position: absolute;
+			content: "";
+			width: 6px;
+			height: 40px;
+			left: 0;
+			bottom: -40px;
+			background-color: red;
+		}
+
+		.clock__arrow--minute {	
+			
+			z-index: 2;					
+			left: 50%;			
+			width: 10px;
+			height: 160px;
+			animation: rotate_arrow 3600s steps(60, end) infinite;			
+			background-color: #000000;		
+			margin-left: -5px;	
+		}
+
+		.clock__arrow--minute:before {
+			position: absolute;
+			content: "";
+			width: 10px;
+			height: 40px;
+			left: 0;
+			bottom: -40px;
+			background-color: #000000;
+		}
+
+		.clock__arrow--hour {			
+			z-index: 1;	
+			top: 100px;				
+			left: 50%;			
+			width: 10px;
+			height: 100px;
+			animation: rotate_arrow 216000s steps(60, end) infinite;			
+			background-color: #000000;	
+			margin-left: -5px;	
+		}
+
+		.clock__arrow--hour:before {
+			position: absolute;
+			content: "";
+			width: 10px;
+			height: 40px;
+			left: 0;
+			bottom: -40px;
+			background-color: #000000;
+		}
+
+		
+
+		.mark:nth-of-type(5n) {
+			position: absolute;
+			top: 10px;
+			left:  50%;
+			width: 10px;
+			height: 30px;
+			margin-left: -5px;
+			background-color:  #000000;
+			transform-origin:  50% 190px;
+		}
+
+		.mark {
+			position: absolute;
+			top: 10px;
+			left:  50%;
+			width: 3px;
+			height: 15px;
+			margin-left: -2.5px;
+			background-color:  #000000;
+			transform-origin:  50% 190px;
+			
+		}
+
+		.mark:nth-of-type(1) {
+			transform: rotate(6deg);
+		} 
+
+		.mark:nth-of-type(2) {
+			transform: rotate(12deg);
+		} 
+
+		.mark:nth-of-type(3) {
+			transform: rotate(18deg);
+		}
+
+		.mark:nth-of-type(4) {
+			transform: rotate(24deg);
+		}
+
+		.mark:nth-of-type(6) {
+			transform: rotate(36deg);
+		}
+
+		.mark:nth-of-type(7) {
+			transform: rotate(42deg);
+		}
+
+		.mark:nth-of-type(8) {
+			transform: rotate(48deg);
+		}
+
+		.mark:nth-of-type(9) {
+			transform: rotate(54deg);
+		}
+
+		.mark:nth-of-type(11) {
+			transform: rotate(66deg);
+		}
+
+		.mark:nth-of-type(12) {
+			transform: rotate(72deg);
+		}
+
+		.mark:nth-of-type(13) {
+			transform: rotate(78deg);
+		}
+
+		.mark:nth-of-type(14) {
+			transform: rotate(84deg);
+		}
+
+		.mark:nth-of-type(16) {
+			transform: rotate(96deg);
+		}
+
+		.mark:nth-of-type(17) {
+			transform: rotate(102deg);
+		}
+
+		.mark:nth-of-type(18) {
+			transform: rotate(108deg);
+		}
+
+		.mark:nth-of-type(19) {
+			transform: rotate(114deg);
+		}
+
+		.mark:nth-of-type(21) {
+			transform: rotate(126deg);
+		}
+
+		.mark:nth-of-type(22) {
+			transform: rotate(132deg);
+		}
+
+		.mark:nth-of-type(23) {
+			transform: rotate(138deg);
+		}
+
+		.mark:nth-of-type(24) {
+			transform: rotate(144deg);
+		}
+
+		.mark:nth-of-type(26) {
+			transform: rotate(156deg);
+		}
+
+		.mark:nth-of-type(27) {
+			transform: rotate(162deg);
+		}
+
+		.mark:nth-of-type(28) {
+			transform: rotate(168deg);
+		}
+
+		.mark:nth-of-type(29) {
+			transform: rotate(174deg);
+		}
+
+		.mark:nth-of-type(31) {
+			transform: rotate(186deg);
+		}
+
+		.mark:nth-of-type(32) {
+			transform: rotate(192deg);
+		}
+
+		.mark:nth-of-type(33) {
+			transform: rotate(198deg);
+		}
+
+		.mark:nth-of-type(34) {
+			transform: rotate(204deg);
+		}
+
+		.mark:nth-of-type(36) {
+			transform: rotate(216deg);
+		}
+
+		.mark:nth-of-type(37) {
+			transform: rotate(222deg);
+		}
+
+		.mark:nth-of-type(38) {
+			transform: rotate(228deg);
+		}
+
+		.mark:nth-of-type(39) {
+			transform: rotate(234deg);
+		}
+
+		.mark:nth-of-type(41) {
+			transform: rotate(246deg);
+		}
+
+		.mark:nth-of-type(42) {
+			transform: rotate(252deg);
+		}
+
+		.mark:nth-of-type(43) {
+			transform: rotate(258deg);
+		}
+
+		.mark:nth-of-type(44) {
+			transform: rotate(264deg);
+		}
+
+		.mark:nth-of-type(46) {
+			transform: rotate(276deg);
+		}
+
+		.mark:nth-of-type(47) {
+			transform: rotate(282deg);
+		}
+
+		.mark:nth-of-type(48) {
+			transform: rotate(288deg);
+		}
+
+		.mark:nth-of-type(49) {
+			transform: rotate(294deg);
+		}
+
+		.mark:nth-of-type(51) {
+			transform: rotate(306deg);
+		}
+
+		.mark:nth-of-type(52) {
+			transform: rotate(312deg);
+		}
+
+		.mark:nth-of-type(53) {
+			transform: rotate(318deg);
+		}
+
+		.mark:nth-of-type(54) {
+			transform: rotate(324deg);
+		}
+
+		.mark:nth-of-type(56) {
+			transform: rotate(336deg);
+		}
+
+		.mark:nth-of-type(57) {
+			transform: rotate(342deg);
+		}
+
+		.mark:nth-of-type(58) {
+			transform: rotate(348deg);
+		}
+
+		.mark:nth-of-type(59) {
+			transform: rotate(354deg);
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		.mark:nth-of-type(5) {
+			transform: rotate(30deg);
+			
+		}
+		.mark:nth-of-type(10) {
+			transform: rotate(60deg);
+			
+		}
+
+		.mark:nth-of-type(15) {
+			transform: rotate(90deg);
+			
+		}
+
+		.mark:nth-of-type(20) {
+			transform: rotate(120deg);
+			
+		}
+
+		.mark:nth-of-type(25) {
+			transform: rotate(150deg);
+			
+		}
+
+		.mark:nth-of-type(30) {
+			transform: rotate(180deg);
+			
+		}
+
+		.mark:nth-of-type(35) {
+			transform: rotate(210deg);
+			
+		}
+
+		.mark:nth-of-type(40) {
+			transform: rotate(240deg);
+			
+		}
+
+		.mark:nth-of-type(45) {
+			transform: rotate(270deg);
+		
+		}
+
+		.mark:nth-of-type(50) {
+			transform: rotate(300deg);
+			
+		}
+
+		.mark:nth-of-type(55) {
+			transform: rotate(330deg);
+			
+		}
+
+		@keyframes rotate_arrow {
+			from {
+				transform: rotate(0deg);
+			}
+			to {
+				transform: rotate(360deg);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="clock">
+		<div class="clock__arrow clock__arrow--hour"></div>
+		<div class="clock__arrow clock__arrow--minute"></div>
+		<div class="clock__arrow clock__arrow--second"></div>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+		<span class="mark"></span>
+	</div>
+</body>
+</html>
