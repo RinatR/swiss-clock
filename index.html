@@ -494,9 +494,13 @@
     matchUrl: '//cm.g.doubleclick.net/pixel?google_nid=adsniperru&google_cm&extra1={UID}&extra2={EXTRA2}'
   })
 </script>
-	<script> 
-adsn.addKeyValue(‘site_id’, ‘test_site1’);
-adsn.addKeyValue(‘custom_cid’, ‘1234509876’);
-</script>
+	<script type="text/javascript">
+         setTimeout(function () {
+             adsn.addKeyValue('site_id', site_id);
+             adsn.addKeyValue('custom_cid', custom_cid);
+             adsn.sendData();
+         }, 500);
+         
+        </script>
 </body>
 </html>
