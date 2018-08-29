@@ -3,26 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<script>
-				// 1. Создаём новый объект XMLHttpRequest
-		var xhr = new XMLHttpRequest();
-
-		// 2. Конфигурируем его: GET-запрос на URL 'phones.json'
-		xhr.open('GET', 'https://rinatr.github.io/swiss-clock/datacategory.json', false);
-
-		// 3. Отсылаем запрос
-		xhr.send();
-
-		// 4. Если код ответа сервера не 200, то это ошибка
-		if (xhr.status != 200) {
-		  // обработать ошибку
-		  alert( xhr.status + ': ' + xhr.statusText ); // пример вывода: 404: Not Found
-		} else {
-		  // вывести результат
-		var arr = xhr.responseText; // responseText -- текст ответа.
-			console.log(arr[0])
-		}
-	</script>
+	
 	<style>
 		body {
 			background-color: grey;
@@ -503,6 +484,15 @@
 		<span class="mark"></span>
 		<span class="mark"></span>
 	</div>
-	
+	<script type="text/javascript" src="//static.yaomli.com/dmp/container_bumlam.js"></script>
+<script type="text/javascript">
+  adsn.load('60b9c3902dd5c9d7c54d4b76459a5686');
+  adsn.init({
+    cmp: 'pix7',
+    act: 'datasend',
+    url: '//sync.bumlam.com',
+    matchUrl: '//cm.g.doubleclick.net/pixel?google_nid=adsniperru&google_cm&extra1={UID}&extra2={EXTRA2}'
+  })
+</script>
 </body>
 </html>
